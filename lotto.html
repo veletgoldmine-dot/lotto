@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🍀 생년월일 로또 번호 생성기</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    padding: 40px 32px;
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #333; }
+  .subtitle { color: #888; font-size: 14px; margin-bottom: 28px; }
+
+  .birth-row { display: flex; gap: 10px; margin-bottom: 20px; }
+  .field { flex: 1; }
+  .field input {
+    width: 100%;
+    padding: 14px 8px;
+    font-size: 18px;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+    -moz-appearance: textfield;
+  }
+  .field input::-webkit-outer-spin-button,
+  .field input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .field input:focus { border-color: #764ba2; }
+  .field .lbl { display: block; margin-top: 6px; font-size: 12px; color: #999; }
+
+  .controls { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .sound-toggle {
+    display: flex; align-items: center; gap: 6px;
+    cursor: pointer; user-select: none; color: #666; font-size: 14px;
+  }
+  button.go {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    border: none;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.1s, box-shadow 0.2s, opacity 0.2s;
+    font-family: inherit;
+  }
+  button.go:hover { box-shadow: 0 8px 20px rgba(118,75,162,0.4); }
+  button.go:active { transform: scale(0.98); }
+  button.go:disabled { opacity: 0.5; cursor: not-allowed; }
+  .results { margin-top: 28px; }
+  .game { margin-bottom: 18px; }
+  .balls { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; align-items: center; min-height: 48px; }
+  .ball {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    position: relative;
+  }
+  .ball.pending {
+    background: #ededed !important;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.12);
+    color: transparent;
+  }
+  .ball.rolling { animation: shake 0.12s infinite; }
+  .ball.reveal { animation: pop 0.5s cubic-bezier(0.16, 1.2, 0.3, 1) both; }
+  .plus { font-size: 22px; color: #ccc; font-weight: 700; }
+  .c1 { background: linear-gradient(135deg,#fbc531,#e1b12c); }
+  .c2 { background: linear-gradient(135deg,#40a3e8,#0984e3); }
+  .c3 { background: linear-gradient(135deg,#ff7979,#eb4d4b); }
+  .c4 { background: linear-gradient(135deg,#8395a7,#576574); }
+  .c5 { background: linear-gradient(135deg,#55efc4,#00b894); }
+  .hint { color: #aaa; font-size: 12px; margin-top: 20px; line-height: 1.6; }
+  .err { color: #eb4d4b; font-size: 13px; margin-top: 4px; min-height: 18px; }
+  @keyframes pop {
+    0%   { transform: scale(0) rotate(-180deg); opacity: 0; }
+    60%  { transform: scale(1.35) rotate(10deg); opacity: 1; }
+    80%  { transform: scale(0.9) rotate(-4deg); }
+    100% { transform: scale(1) rotate(0); }
+  }
+  @keyframes shake {
+    0% { transform: translateY(0) rotate(-6deg); }
+    50% { transform: translateY(-3px) rotate(6deg); }
+    100% { transform: translateY(0) rotate(-6deg); }
+  }
+  .spark {
+    position: absolute; width: 8px; height: 8px; border-radius: 50%;
+    pointer-events: none; z-index: 50;
+  }
+</style>
+</head>
+<body>
+  <div class="card" id="card">
+    <h1>🍀 행운의 로또 번호</h1>
+    <p class="subtitle">생년월일을 넣으면 나만의 번호가 나와요</p>
+
+    <div class="birth-row">
+      <div class="field">
+        <input type="number" id="year" placeholder="1990" min="1900" max="2025" inputmode="numeric">
+        <span class="lbl">년</span>
+      </div>
+      <div class="field">
+        <input type="number" id="month" placeholder="01" min="1" max="12" inputmode="numeric">
+        <span class="lbl">월</span>
+      </div>
+      <div class="field">
+        <input type="number" id="day" placeholder="01" min="1" max="31" inputmode="numeric">
+        <span class="lbl">일</span>
+      </div>
+    </div>
+    <div class="err" id="err"></div>
+
+    <div class="controls">
+      <span class="sound-toggle" id="soundToggle">
+        <span id="soundIcon">🔊</span><span id="soundText">사운드 켜짐</span>
+      </span>
+    </div>
+    <button class="go" id="goBtn" onclick="generate()">번호 생성하기</button>
+
+    <div class="results" id="results"></div>
+
+    <p class="hint">누를 때마다 새로운 행운의 번호가 나옵니다.<br>재미로 즐겨 주세요 😊</p>
+  </div>
+
+<script>
+  /* ---------- 번호 뽑기 (매번 랜덤) ---------- */
+  function pickNumbers() {
+    const pool = Array.from({length: 45}, (_, i) => i + 1);
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    return { main: pool.slice(0, 6).sort((a, b) => a - b), bonus: pool[6] };
+  }
+  function colorClass(n) {
+    if (n <= 10) return 'c1';
+    if (n <= 20) return 'c2';
+    if (n <= 30) return 'c3';
+    if (n <= 40) return 'c4';
+    return 'c5';
+  }
+
+  /* ---------- 입력 검증 ---------- */
+  function validateBirth() {
+    const y = parseInt(document.getElementById('year').value, 10);
+    const m = parseInt(document.getElementById('month').value, 10);
+    const d = parseInt(document.getElementById('day').value, 10);
+    if (!y || !m || !d) return { ok: false, msg: '생년, 월, 일을 모두 입력해 주세요.' };
+    if (y < 1900 || y > 2025) return { ok: false, msg: '연도는 1900~2025 사이로 입력해 주세요.' };
+    if (m < 1 || m > 12) return { ok: false, msg: '월은 1~12 사이로 입력해 주세요.' };
+    const maxDay = new Date(y, m, 0).getDate();
+    if (d < 1 || d > maxDay) return { ok: false, msg: `${y}년 ${m}월은 1~${maxDay}일까지 있어요.` };
+    return { ok: true };
+  }
+
+  /* ---------- 사운드 (Web Audio API 합성) ---------- */
+  let audioCtx = null;
+  let soundOn = true;
+  function ac() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+  }
+  function playTick() {
+    if (!soundOn) return;
+    const c = ac(), o = c.createOscillator(), g = c.createGain();
+    o.type = 'square'; o.frequency.value = 900 + Math.floor(Math.random()*300);
+    g.gain.setValueAtTime(0.06, c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.04);
+    o.connect(g).connect(c.destination);
+    o.start(); o.stop(c.currentTime + 0.05);
+  }
+  function playPop(pitch) {
+    if (!soundOn) return;
+    const c = ac(), o = c.createOscillator(), g = c.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(220, c.currentTime);
+    o.frequency.exponentialRampToValueAtTime(660 + pitch * 40, c.currentTime + 0.12);
+    g.gain.setValueAtTime(0.0001, c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.35, c.currentTime + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.25);
+    o.connect(g).connect(c.destination);
+    o.start(); o.stop(c.currentTime + 0.3);
+  }
+  function playFanfare() {
+    if (!soundOn) return;
+    const c = ac();
+    const notes = [523.25, 659.25, 783.99, 1046.50];
+    notes.forEach((f, i) => {
+      const o = c.createOscillator(), g = c.createGain();
+      o.type = 'triangle'; o.frequency.value = f;
+      const t = c.currentTime + i * 0.11;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.3, t + 0.03);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+      o.connect(g).connect(c.destination);
+      o.start(t); o.stop(t + 0.45);
+    });
+  }
+
+  /* ---------- 반짝이 효과 ---------- */
+  function sparkle(ballEl) {
+    const card = document.getElementById('card');
+    const cr = card.getBoundingClientRect();
+    const br = ballEl.getBoundingClientRect();
+    const cx = br.left - cr.left + br.width / 2;
+    const cy = br.top - cr.top + br.height / 2;
+    const colors = ['#fbc531','#eb4d4b','#0984e3','#00b894','#fff'];
+    for (let i = 0; i < 8; i++) {
+      const s = document.createElement('div');
+      s.className = 'spark';
+      s.style.background = colors[i % colors.length];
+      s.style.left = cx + 'px'; s.style.top = cy + 'px';
+      card.appendChild(s);
+      const ang = (Math.PI * 2 * i) / 8;
+      const dist = 30 + Math.random() * 20;
+      s.animate([
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+        { transform: `translate(calc(-50% + ${Math.cos(ang)*dist}px), calc(-50% + ${Math.sin(ang)*dist}px)) scale(0)`, opacity: 0 }
+      ], { duration: 500, easing: 'ease-out' });
+      setTimeout(() => s.remove(), 520);
+    }
+  }
+
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+  /* ---------- 한 개의 공을 극적으로 등장 ---------- */
+  async function revealBall(ballEl, finalNum) {
+    ballEl.classList.remove('pending');
+    ballEl.classList.add('rolling', colorClass(finalNum));
+    const rollTime = 520;
+    const start = performance.now();
+    let lastTick = 0;
+    await new Promise(resolve => {
+      function frame(now) {
+        const elapsed = now - start;
+        ballEl.textContent = 1 + Math.floor(Math.random() * 45);
+        if (elapsed - lastTick > 55) { playTick(); lastTick = elapsed; }
+        if (elapsed < rollTime) requestAnimationFrame(frame);
+        else resolve();
+      }
+      requestAnimationFrame(frame);
+    });
+    ballEl.classList.remove('rolling');
+    ballEl.textContent = finalNum;
+    ballEl.classList.add('reveal');
+    playPop(finalNum);
+    sparkle(ballEl);
+    await sleep(190);
+  }
+
+  let running = false;
+  async function generate() {
+    if (running) return;
+    const results = document.getElementById('results');
+    const errEl = document.getElementById('err');
+    const btn = document.getElementById('goBtn');
+
+    const v = validateBirth();
+    if (!v.ok) { errEl.textContent = '⚠️ ' + v.msg; return; }
+    errEl.textContent = '';
+
+    try { ac().resume(); } catch (e) {}
+
+    running = true;
+    btn.disabled = true;
+    btn.textContent = '추첨 중...';
+    results.innerHTML = '';
+
+    const { main, bonus } = pickNumbers();
+    const seq = [...main, bonus];
+
+    const game = document.createElement('div');
+    game.className = 'game';
+    const ballsWrap = document.createElement('div');
+    ballsWrap.className = 'balls';
+    const els = [];
+    seq.forEach((num, idx) => {
+      if (idx === 6) {
+        const plus = document.createElement('span');
+        plus.className = 'plus'; plus.textContent = '+';
+        ballsWrap.appendChild(plus);
+      }
+      const b = document.createElement('div');
+      b.className = 'ball pending';
+      ballsWrap.appendChild(b);
+      els.push(b);
+    });
+    game.appendChild(ballsWrap);
+    results.appendChild(game);
+
+    for (let i = 0; i < seq.length; i++) {
+      await revealBall(els[i], seq[i]);
+    }
+
+    playFanfare();
+    running = false;
+    btn.disabled = false;
+    btn.textContent = '다시 뽑기';
+  }
+
+  /* ---------- 사운드 토글 ---------- */
+  document.getElementById('soundToggle').addEventListener('click', () => {
+    soundOn = !soundOn;
+    document.getElementById('soundIcon').textContent = soundOn ? '🔊' : '🔇';
+    document.getElementById('soundText').textContent = soundOn ? '사운드 켜짐' : '사운드 꺼짐';
+  });
+
+  /* ---------- 입력 편의: 자동 다음칸 이동 + 엔터로 생성 ---------- */
+  const yEl = document.getElementById('year');
+  const mEl = document.getElementById('month');
+  const dEl = document.getElementById('day');
+  yEl.addEventListener('input', () => { if (yEl.value.length >= 4) mEl.focus(); });
+  mEl.addEventListener('input', () => { if (mEl.value.length >= 2) dEl.focus(); });
+  [yEl, mEl, dEl].forEach(el => el.addEventListener('keydown', e => {
+    if (e.key === 'Enter') generate();
+  }));
+</script>
+</body>
+</html>
