@@ -8,3 +8,6 @@ __pycache__/
 # Editor / tooling
 .claude/
 today-fortune/
+
+# 별도 저장소로 분리된 프로젝트
+prompt-generator/
