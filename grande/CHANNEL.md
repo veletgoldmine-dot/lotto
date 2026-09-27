@@ -4,7 +4,7 @@
 - 채널 이름: 그란데? grande?  (로고·배너에 한글/영문 병기)
 - 채널 URL: https://www.youtube.com/channel/UCXrgA3_0I_jzJnL68Gmemhw
 - 채널 ID: UCXrgA3_0I_jzJnL68Gmemhw
-- 핸들: 미확인 (후보: @grande_why · @grande_news · @그란데 (앞에서부터 가능한 것))
+- 핸들: @grande_why (https://www.youtube.com/@grande_why)
 - 프로필 이미지: https://d8j0ntlcm91z4.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/hf_20260927_063352_c127797d-efa3-4a3d-afdc-8e6ef7ad33c9.png
 - 배너: https://d8j0ntlcm91z4.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/hf_20260927_063636_a76aa698-fa2c-45e9-9bab-1a9b81198843.png
 
