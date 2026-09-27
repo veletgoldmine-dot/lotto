@@ -48,7 +48,7 @@ for i,c in enumerate(cuts):
  K=[]
  for st,txt,an in c['kw']:
   k=c['tts'].find(an) if isinstance(an,str) else -1;fr=an if isinstance(an,(int,float)) else (k/len(c['tts']) if k>=0 else 0)
-  K.append([st,txt,c['t0']+max(0,d*fr-0.15)]);ev.append(('thump' if st=='stamp' else 'tick',K[-1][2]))
+  K.append([st,txt,c['t0']+(0.25 if st=='stamp' else max(0,d*fr-0.15))]);ev.append(('thump',K[-1][2]+0.1) if st=='stamp' else ('tick',K[-1][2]))
  for j,k in enumerate(K):k+=[K[j+1][2]-0.05 if j+1<len(K) else c['t0']+c['d'],paper(k[1],k[0],i*10+j),i*10+j]
  c['K']=K;R=random.Random(i);c['edge']=jag(R,H//16+2,26)
 T=t+OUTRO
@@ -94,7 +94,8 @@ for n in range(N):
   if a<=t<b:fr.paste(im,(0,1480),im)
  prev=fr;p.stdin.write(fr.tobytes())
 p.stdin.close();p.wait()
-subprocess.run('sox -n thump.wav synth 0.35 sine 90:40 fade 0 0.35 0.3 gain -4 && sox -n tick.wav synth 0.12 pinknoise fade 0 0.12 0.1 highpass 1500 gain -16',shell=True,check=1)
+# 도장 효과음: 저음 쿵 + 종이 파열음 + 짧은 잔향 (폰 스피커에서도 들리도록 중저역 포함)
+subprocess.run('sox -n b.wav synth 0.28 sine 160:45 fade 0 0.28 0.24 && sox -n c.wav synth 0.05 whitenoise highpass 1200 fade 0 0.05 0.045 && sox -m -v 1.0 b.wav -v 0.7 c.wav thump.wav reverb 25 50 40 gain -n -1 && sox -n tick.wav synth 0.12 pinknoise fade 0 0.12 0.1 highpass 1500 gain -16',shell=True,check=1)
 ins=[];fl=[];src=aud+[(e+'.wav',s) for e,s in ev]
 for k,(a,s) in enumerate(src):ins+=['-i',a];fl.append(f'[{k+1}:a]adelay=delays={int(s*1000)}:all=1[s{k}]')
 fl.append(''.join(f'[s{k}]' for k in range(len(src)))+f'amix=inputs={len(src)}:normalize=0[a]')
