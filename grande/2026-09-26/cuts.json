@@ -1,0 +1,20 @@
+{
+  "model": "gpt_image_2", "aspect_ratio": "9:16", "note": "job_id = Higgsfield generation id, 영상 생성 시 medias 입력으로 사용",
+  "ep1_hormuz": {
+    "1": "5fc2ab87-98e8-4a46-940a-ab7ef83b9869",
+    "2": "4b1ac9e3-1d23-406d-8939-ef1b2c600ac6",
+    "3": "2b8c2058-1050-4fc5-80f4-ca2faac1787f",
+    "4": "f5625bb2-01a4-4c2c-a612-a7fb87f56fd3",
+    "5": "4bd193d1-a938-4529-a89e-f64fdb88c4a2",
+    "6": "009753d4-a318-4981-98db-d602d3472ab2",
+    "7": "cb244949-3cb5-4d7a-93fb-0ab5b933c963"
+  },
+  "ep2_cart": {
+    "1": "0ef723da-3c5b-4206-bed3-ecc4eeda08c6",
+    "2": "8552e446-0117-4635-8e5a-ca01f98c9f64",
+    "3": "344a353d-0d85-4d32-8e54-ce731cca9877",
+    "4": "a7ed0179-c372-4139-b210-fad9f47e87f0",
+    "5": "a49b75af-1686-478d-a8cd-f50e7998973a",
+    "6": "41495932-3ad1-4604-92ec-ee5c5c39d4bc"
+  }
+}
