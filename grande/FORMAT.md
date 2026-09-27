@@ -24,4 +24,7 @@
 3. 컷 이미지: GPT Image 2.5 flare low 2k (장당 0.5크레딧), `style_prompt.md`
 4. 내레이션: ElevenLabs '해철' 보이스 (숫자·영문은 읽는 소리로 바꿔 입력)
 5. 렌더: `tools/render.py` + 편별 `render_epN.json` (Higgsfield 샌드박스)
+   - 사운드 로고: 인트로·아웃트로 로고가 뜰 때 여자 목소리 "그란데?" (끝을 올리는 질문 톤)
+     ElevenLabs 'Hanna' 보이스, eleven_v3, 프롬프트 `[curious] 그란데?`
+     파일: https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/25306ea3-faac-416b-a908-3ba644e576da.mp3 (render_epN.json의 `sting`)
    - 흔들림 금지. 전환은 찢어진 종이, 키워드는 종이 조각, 그런데는 도장+효과음

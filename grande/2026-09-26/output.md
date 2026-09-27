@@ -1,6 +1,11 @@
 # 2026-09-26 완성본
 
-## v3 (현재)
+## v4 (현재)
+- 변경: 인트로·아웃트로 로고에 여자 목소리 "그란데?" 사운드 로고 추가 (나머지는 v3과 같음)
+- 편1 118.6초: https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/662f8191-10c3-490c-9f91-9fa1df7d965a.mp4
+- 편2 98.5초: https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/63c9ac2e-fd50-4aba-ac76-580eccc891c7.mp4
+
+## v3
 - 편2 98.5초 (산정특례·임상시험 팁 추가): https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/8df698c7-3ece-4da3-b1a3-4ac1b7357ec6.mp4
 - 편1 118.6초 (대비책·팁 컷 추가): https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/ad4c7cd5-f0e5-42e1-974a-30420803eb5e.mp4
 
