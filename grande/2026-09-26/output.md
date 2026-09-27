@@ -1,6 +1,7 @@
 # 2026-09-26 완성본
 
-## v3 편1 (현재)
+## v3 (현재)
+- 편2 98.5초 (산정특례·임상시험 팁 추가): https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/8df698c7-3ece-4da3-b1a3-4ac1b7357ec6.mp4
 - 편1 118.6초 (대비책·팁 컷 추가): https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/ad4c7cd5-f0e5-42e1-974a-30420803eb5e.mp4
 
 ## v2
