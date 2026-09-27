@@ -65,9 +65,11 @@ fB=ImageFont.truetype(FB,250);fQ=ImageFont.truetype(FN,60);LG=paper('그란데?'
 def logo(lt,q):
  fr=Image.new('RGB',(W,H),PAPER);s=1+0.25*(1-eo(lt/0.2));r=LG.resize((int(LG.width*s*1.3),int(LG.height*s*1.3)),Image.BICUBIC)
  if lt>0.05:fr.paste(r,((W-r.width)//2,H//2-160-r.height//2),r)
+ if lt>0.2:
+  d=ImageDraw.Draw(fr);fE=ImageFont.truetype(FB,96);e='grande?';d.text(((W-fE.getlength(e))/2,H//2-160+r.height//2+20),e,font=fE,fill=RED)
  if q and lt>0.4:
   d=ImageDraw.Draw(fr)
-  for i,l in enumerate(wrap(q,fQ,900)):d.text(((W-fQ.getlength(l))/2,H//2+120+i*80),l,font=fQ,fill=INK)
+  for i,l in enumerate(wrap(q,fQ,900)):d.text(((W-fQ.getlength(l))/2,H//2+200+i*80),l,font=fQ,fill=INK)
  return fr
 p=subprocess.Popen(['ffmpeg','-y','-v','error','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-','-c:v','libx264','-preset','veryfast','-crf','21','-pix_fmt','yuv420p','v.mp4'],stdin=subprocess.PIPE)
 N=int(T*FPS);prev=None
