@@ -5,6 +5,12 @@
 - 편1 118.6초: https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/662f8191-10c3-490c-9f91-9fa1df7d965a.mp4
 - 편2 98.5초: https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/63c9ac2e-fd50-4aba-ac76-580eccc891c7.mp4
 
+### 업로드용 제목·썸네일
+| 편 | 제목 | 썸네일 |
+|---|---|---|
+| 1 | 국제유가 내렸는데, 주유소 기름값은 왜 그대로야? \| 그란데? | https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/318739ab-5761-4838-99eb-50dfc94d5b22.jpg |
+| 2 | 항암제 3번 실패한 3살, 주사 2번에 암이 사라졌다고? \| 그란데? | https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/205aba3a-248a-4898-b9a7-127782dae8e0.jpg |
+
 ## v3
 - 편2 98.5초 (산정특례·임상시험 팁 추가): https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/8df698c7-3ece-4da3-b1a3-4ac1b7357ec6.mp4
 - 편1 118.6초 (대비책·팁 컷 추가): https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/ad4c7cd5-f0e5-42e1-974a-30420803eb5e.mp4
