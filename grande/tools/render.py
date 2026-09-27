@@ -98,6 +98,10 @@ for n in range(N):
 p.stdin.close();p.wait()
 # 도장 효과음: 저음 쿵 + 종이 파열음 + 짧은 잔향 (폰 스피커에서도 들리도록 중저역 포함)
 subprocess.run('sox -n b.wav synth 0.28 sine 160:45 fade 0 0.28 0.24 && sox -n c.wav synth 0.05 whitenoise highpass 1200 fade 0 0.05 0.045 && sox -m -v 1.0 b.wav -v 0.7 c.wav thump.wav reverb 25 50 40 gain -n -1 && sox -n tick.wav synth 0.12 pinknoise fade 0 0.12 0.1 highpass 1500 gain -16',shell=True,check=1)
+# 사운드 로고: 인트로·아웃트로 로고 도장이 찍히는 순간 여자 목소리 '그란데?'
+if M.get('sting'):
+ get(M['sting'],'sting.mp3');ev+=[('sting',0.05),('sting',T-OUTRO+TR)]
+ subprocess.run('ffmpeg -y -v error -i sting.mp3 -af silenceremove=start_periods=1:start_threshold=-45dB,volume=1.4 sting.wav',shell=True,check=1)
 ins=[];fl=[];src=aud+[(e+'.wav',s) for e,s in ev]
 for k,(a,s) in enumerate(src):ins+=['-i',a];fl.append(f'[{k+1}:a]adelay=delays={int(s*1000)}:all=1[s{k}]')
 fl.append(''.join(f'[s{k}]' for k in range(len(src)))+f'amix=inputs={len(src)}:normalize=0,alimiter=limit=0.89:level=false[a]')
