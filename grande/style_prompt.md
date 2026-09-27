@@ -15,5 +15,6 @@ bottom-left corner reading "그란데?". Mood: early digital systems meets analo
 AVOID: solid black backgrounds, glossy 3D, cartoon style, any other text, watermarks.
 ```
 
-- 모델: `gpt_image_2`, quality medium, resolution 2k (장당 2크레딧)
+- 모델(기본): `gpt_image_2_5`, variant flare, quality low, resolution 2k (장당 0.5크레딧, 1520x2688)
+- 대체: `seedream_5_0_flash` 2k (0.5크레딧) / 이전: `gpt_image_2` medium 2k (2크레딧)
 - Vox 레퍼런스(Higgsfield media_id, 선택): `a66d0af7-b226-4126-b7e2-6ba3bfd4954e` (Trade wars), `80e6bf05-d199-4ad9-a2ad-56067c20818c` (Arctic borders), `9e5e399c-e4e3-4c6b-8c3c-39df7794f1a3` (Roman maps)

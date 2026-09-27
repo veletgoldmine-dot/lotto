@@ -21,7 +21,7 @@
 ## 제작 파이프라인
 1. 뉴스 후보 10개 (국내 5·해외 5) → 사람이 선택
 2. 대본 → 사람이 검수
-3. 컷 이미지: GPT Image 2, `style_prompt.md`
+3. 컷 이미지: GPT Image 2.5 flare low 2k (장당 0.5크레딧), `style_prompt.md`
 4. 내레이션: ElevenLabs '해철' 보이스 (숫자·영문은 읽는 소리로 바꿔 입력)
 5. 렌더: `tools/render.py` + 편별 `render_epN.json` (Higgsfield 샌드박스)
    - 흔들림 금지. 전환은 찢어진 종이, 키워드는 종이 조각, 그런데는 도장+효과음
