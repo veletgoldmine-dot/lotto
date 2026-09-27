@@ -1,6 +1,9 @@
 # 2026-09-26 완성본
 
-## v2 (현재)
+## v3 편1 (현재)
+- 편1 118.6초 (대비책·팁 컷 추가): https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/ad4c7cd5-f0e5-42e1-974a-30420803eb5e.mp4
+
+## v2
 | 편 | 길이 | 파일 |
 |---|---|---|
 | 1 호르무즈 | 82.0초 | https://d2ol7oe51mr4n9.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/a5e16967-9fbe-4042-bfa4-a97d69444f71.mp4 |
