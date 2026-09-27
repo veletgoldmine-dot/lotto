@@ -1,10 +1,10 @@
 # 유튜브 채널: 그란데?
 
 ## 기본 정보
-- 채널 이름: 그란데?
+- 채널 이름: 그란데? grande?  (로고·배너에 한글/영문 병기)
 - 핸들 후보: @grande_why · @grande_news · @그란데 (앞에서부터 가능한 것)
-- 프로필 이미지: https://d8j0ntlcm91z4.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/hf_20260927_062656_743c0792-db56-4805-9c7a-008fee16c865.png
-- 배너: https://d8j0ntlcm91z4.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/hf_20260927_062656_39917f05-5f63-45d7-bd2b-3bf27a54f549.png
+- 프로필 이미지: https://d8j0ntlcm91z4.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/hf_20260927_063352_c127797d-efa3-4a3d-afdc-8e6ef7ad33c9.png
+- 배너: https://d8j0ntlcm91z4.cloudfront.net/user_2wikFSnjhQWZCBez5BIT8t83kDU/hf_20260927_063352_65eef4c6-eef7-4213-9937-94ea6c882039.png
 
 ## 채널 설명
 다들 아는 상식, 그런데 진짜일까?
