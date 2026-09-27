@@ -1,0 +1,22 @@
+{
+  "provider": "elevenlabs", "voice": "해철 (X0VqIIT9CdHJuR7QQEhH)", "model": "eleven_multilingual_v2",
+  "flow_id": "xRRPbu7kmQg13ltDD96i",
+  "note": "mp3 URL은 2시간 만료. creative_get_flow_run_status(flow_id, session_id)로 새 URL 발급",
+  "ep1_hormuz": [
+    {"cut": 1, "session": "FTtUsSSGCRJZ8EiExNaM", "sec": 4.55},
+    {"cut": 2, "session": "iGOI1QIk41Kexh4M6cta", "sec": 5.71},
+    {"cut": 3, "session": "oTqlQG8Thsgr5WoSCULN", "sec": 16.63},
+    {"cut": 4, "session": "QszMkOIEXoFrmW4b5gLe", "sec": 17.60},
+    {"cut": 5, "session": "8a7f0suXwCdP32vqqt8r", "sec": 9.57},
+    {"cut": 6, "session": "cnDh31TFqs3e9086tvmy", "sec": 6.46},
+    {"cut": 7, "session": "sKg9RpgPuBKLbnjCs2sU", "sec": 8.17}
+  ],
+  "ep2_cart": [
+    {"cut": 1, "session": "PC2b1lv0n5bj2qMBiidN", "sec": 5.43},
+    {"cut": 2, "session": "RY7gLaMgiwTIfGZg559W", "sec": 4.78},
+    {"cut": 3, "session": "HUlO7rpoO0T53bnZRTkO", "sec": 12.07},
+    {"cut": 4, "session": "ha3Nb0dhGqE1137jcANe", "sec": 9.06},
+    {"cut": 5, "session": "0VIb9oMMI5esXjZvqgMr", "sec": 17.00},
+    {"cut": 6, "session": "EowDe4eXzpXjnCSzOvg6", "sec": 13.79}
+  ]
+}
