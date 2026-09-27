@@ -48,7 +48,7 @@ for i,c in enumerate(cuts):
  K=[]
  for st,txt,an in c['kw']:
   k=c['tts'].find(an) if isinstance(an,str) else -1;fr=an if isinstance(an,(int,float)) else (k/len(c['tts']) if k>=0 else 0)
-  K.append([st,txt,c['t0']+(0.25 if st=='stamp' else max(0,d*fr-0.15))]);ev.append(('thump',K[-1][2]+0.1) if st=='stamp' else ('tick',K[-1][2]))
+  K.append([st,txt,c['t0']+(0.25 if st=='stamp' and not isinstance(an,str) else max(0,d*fr-0.15))]);ev.append(('thump',K[-1][2]+0.1) if st=='stamp' else ('tick',K[-1][2]))
  for j,k in enumerate(K):k+=[K[j+1][2]-0.05 if j+1<len(K) else c['t0']+c['d'],paper(k[1],k[0],i*10+j),i*10+j]
  c['K']=K;R=random.Random(i);c['edge']=jag(R,H//16+2,26)
 T=t+OUTRO
